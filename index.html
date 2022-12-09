@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>wakelock</h1>
+    <script>
+        // Function that attempts to request a screen wake lock.
+        const requestWakeLock = async () => {
+            try {
+                wakeLock = await navigator.wakeLock.request();
+                wakeLock.addEventListener('release', () => {
+                    console.log('Screen Wake Lock released:', wakeLock.released);
+                });
+                console.log('Screen Wake Lock released:', wakeLock.released);
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        };
+
+        // Request a screen wake lock…
+        await requestWakeLock();
+    </script>
