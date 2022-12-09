@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>wakelock</h1>
+  <head>
+    <title>Screen Wake Lock Demo</title>
+    <meta charset="utf-8">
     <script>
-        // Function that attempts to request a screen wake lock.
-        const requestWakeLock = async () => {
-            try {
-                wakeLock = await navigator.wakeLock.request();
-                wakeLock.addEventListener('release', () => {
-                    console.log('Screen Wake Lock released:', wakeLock.released);
-                });
-                console.log('Screen Wake Lock released:', wakeLock.released);
-            } catch (err) {
-                console.error(`${err.name}, ${err.message}`);
-            }
-        };
-
-        // Request a screen wake lock…
-        await requestWakeLock();
+      if (location.protocol !== 'https:') {
+        location.protocol = 'https:'
+      }
     </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="origin-trial" content="Aj48SAN1EJXtSGJVzQotGPDYf336nStMH0BGxzv+ZA51CssNUGvWgMSpc/h/mXvl2u2YkIAeNsK5SPE85KFregkAAABaeyJvcmlnaW4iOiJodHRwczovL3dha2UtbG9jay1kZW1vLmdsaXRjaC5tZTo0NDMiLCJmZWF0dXJlIjoiV2FrZUxvY2siLCJleHBpcnkiOjE1OTQxNjYzOTl9">
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <h1>Screen Wake Lock Demo</h1>    
+    <div>
+      <label><input type="checkbox" id="wakeLockCheckbox"> Activate <code>screen</code> Wake Lock</label>
+    </div>    
+    <div>    
+      <label><input type="checkbox" id="reacquireCheckbox"> Re-Acquire <code>screen</code> Wake Lock On Visibility Changes</label>
+    </div>
+    <div>
+      <button id="fullScreenButton" type="button">Go Full Screen</button>
+    </div>
+    <div id="statusDiv"></div>
+  </body>
+</html>
